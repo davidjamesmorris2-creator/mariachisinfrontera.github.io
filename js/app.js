@@ -19,6 +19,12 @@ document.addEventListener('DOMContentLoaded', () => {
   buildSlideshow();
   buildVideos();
   buildContact();
+  // Show admin link in footer if adminUrl is set
+  const adminLink = document.getElementById('adminFooterLink');
+  if (adminLink && SITE_TEXT.adminUrl && !SITE_TEXT.adminUrl.includes('PASTE')) {
+    adminLink.href = SITE_TEXT.adminUrl;
+    adminLink.style.display = 'inline';
+  }
   loadGigs();
 
   // Scroll reveal
