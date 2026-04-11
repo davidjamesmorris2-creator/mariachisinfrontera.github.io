@@ -226,8 +226,66 @@ async function loadGigs() {
   const empty   = document.getElementById('gigsEmpty');
   const loading = document.getElementById('gigsLoading');
 
-  const url = SITE_TEXT.appsScriptUrl;
-  if (!url || url.includes('PASTE_YOUR')) {
+  // Reads directly from public Google Sheet CSV — no CORS issues
+  const sheetId = SITE_TEXT.googleSheetId;
+  if (!sheetId || sheetId.includes('PASTE')) {
+    if (loading) loading.style.display = 'none';
+    if (empty) empty.style.display = 'block';
+    return;
+  }
+
+  try {
+    const csvUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv&sheet=Gigs`;
+    const res    = await fetch(csvUrl);
+    const text   = await res.text();
+    const rows   = text.trim().split('\n').slice(1); // skip header row
+    if (loading) loading.style.display = 'none';
+
+    const today = new Date(); today.setHours(0,0,0,0);
+    const MONTHS = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+
+    const gigs = rows
+      .map(row => {
+        // Parse CSV row (values are quoted)
+        const cols = row.match(/(".*?"|[^,]+)(?=,|$)/g) || [];
+        const clean = cols.map(c => c.replace(/^"|"$/g,'').trim());
+        return { id: clean[0], name: clean[1], date: clean[2], venue: clean[3], visibility: clean[4] };
+      })
+      .filter(g => {
+        if (!g.name || !g.date) return false;
+        if (g.visibility === 'private') return false;
+        const d = new Date(g.date + 'T00:00:00');
+        return d >= today;
+      })
+      .sort((a,b) => new Date(a.date) - new Date(b.date));
+
+    if (!gigs.length) { if (empty) empty.style.display = 'block'; return; }
+
+    list.innerHTML = gigs.map(g => {
+      const d = new Date(g.date + 'T00:00:00');
+      return `
+        <div class="gig-row reveal">
+          <div class="gig-cal">
+            <div class="gig-day">${d.getDate()}</div>
+            <div class="gig-month">${MONTHS[d.getMonth()]} ${d.getFullYear()}</div>
+          </div>
+          <div class="gig-info">
+            <div class="gig-name">${g.name}</div>
+            <div class="gig-venue">📍 ${g.venue}</div>
+          </div>
+        </div>`;
+    }).join('');
+
+    const ro = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); }});
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.gig-row').forEach(el => ro.observe(el));
+
+  } catch(err) {
+    if (loading) loading.style.display = 'none';
+    if (empty) { empty.textContent = 'Could not load performances — check back soon.'; empty.style.display = 'block'; }
+  }
+}
     loading.style.display = 'none';
     empty.textContent = 'Gig dates coming soon — check back shortly!';
     empty.style.display = 'block';
