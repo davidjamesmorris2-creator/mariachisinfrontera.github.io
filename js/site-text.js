@@ -1,19 +1,21 @@
 // ╔══════════════════════════════════════════════════════════════════╗
 // ║   MARIACHI SIN FRONTERA — WEBSITE TEXT & SETTINGS               ║
 // ║   This is the ONLY file you need to edit for most changes.      ║
-// ║   After editing: save, then re-upload msf6 folder to GitHub.   ║
+// ║   Edit on GitHub: find the file → click pencil icon → commit.   ║
 // ╚══════════════════════════════════════════════════════════════════╝
 
 const SITE_TEXT = {
 
   // ── GOOGLE APPS SCRIPT URL ───────────────────────────────────────
-  // After setting up the Google Apps Script (see GOOGLE-APPS-SCRIPT.js),
-  // paste the Web App URL here.
-  // It looks like: https://script.google.com/macros/s/XXXXX.../exec
+  // Your Google Apps Script Web App URL — do not change this
   appsScriptUrl: "https://script.google.com/macros/s/AKfycbzfJnVRape394Pjpuq-nj74LrYTzSJc7P-iVJei4uNblviZZCW1LLulDIjZlTUB3-g/exec",
+
+  // Your Google Sheet ID — used to load public gig dates on the website
   googleSheetId: "15mPIt4aAwwjKH3g3b72E1Uv1zJp-vIbegfBddXAhyV4",
-  // Admin panel link shown in site footer — paste same URL as above
-  adminUrl: "",
+
+  // Admin panel link — shown in the site footer
+  // Paste your Google Apps Script URL here too
+  adminUrl: "https://script.google.com/macros/s/AKfycbzfJnVRape394Pjpuq-nj74LrYTzSJc7P-iVJei4uNblviZZCW1LLulDIjZlTUB3-g/exec",
 
   // ── CONTACT INFO ─────────────────────────────────────────────────
   phone:    "(250) 555-1234",
@@ -21,7 +23,7 @@ const SITE_TEXT = {
   location: "Victoria, BC, Canada",
 
   // ── SOCIAL MEDIA LINKS ───────────────────────────────────────────
-  // Replace YOUR_PAGE etc. with your real links.
+  // Replace YOUR_PAGE etc. with your real social media profile links.
   // To add Twitter/X: remove the // at the start of the twitter line.
   facebook:  "https://www.facebook.com/YOUR_PAGE",
   instagram: "https://www.instagram.com/YOUR_HANDLE",
@@ -29,43 +31,54 @@ const SITE_TEXT = {
   // twitter: "https://twitter.com/YOUR_HANDLE",
 
   // ── GOOGLE DRIVE LINKS ───────────────────────────────────────────
-  // Shown in the Admin panel for band members to access resources.
-  // Right-click folder in Drive → Share → "Anyone with the link" → Copy link
+  // Links to your private Drive folders — shown in the Admin panel only.
+  // To get a link: right-click folder in Drive → Share →
+  //   "Anyone with the link can view" → Copy link
   drive: {
-    sheetMusic:     "",   // ← paste sheet music folder link
-    pastRecordings: "",   // ← paste past performances/recordings link
-    referenceSongs: ""    // ← paste YouTube/reference songs folder link
+    sheetMusic:     "",   // ← paste your sheet music folder link
+    pastRecordings: "",   // ← paste your recordings folder link
+    referenceSongs: ""    // ← paste your reference songs folder link
   },
 
-  // ── ABOUT SECTION ────────────────────────────────────────────────
-  // Band photo for the "Our Story" section.
+  // ── ABOUT SECTION — BAND PHOTO ───────────────────────────────────
+  // The photo shown in the "Our Story" section.
   //
-  // HOW TO ADD YOUR BAND PHOTO — TWO OPTIONS:
+  // HOW TO ADD/CHANGE THE BAND PHOTO:
   //
-  // Option A: File in images/ folder (same as before)
-  //   1. Copy photo into the images/ folder
-  //   2. Set bandPhoto to just the filename: "my-photo.jpg"
+  // Option A — Upload via Admin Panel (recommended):
+  //   1. Open your Admin Panel URL in browser
+  //   2. Click the "📷 Photos" tab
+  //   3. Drag your photo into the upload box
+  //   4. Click "Set as Band Photo" — the card highlights green
+  //      and the link appears above the upload box
+  //   5. Copy that link and paste it below (replacing the current value)
+  //   6. Commit on GitHub — site updates in 1-2 minutes
   //
-  // Option B: Google Drive link (no re-uploading needed)
-  //   1. Put photo in Google Drive
-  //   2. Right-click → Share → "Anyone with the link"
-  //   3. Get the direct image link (see SETUP-GUIDE.txt for details)
-  //   4. Paste the full https://... link as bandPhoto
+  // Option B — Direct from Google Drive:
+  //   1. Right-click photo in Drive → Share → "Anyone with the link"
+  //   2. Copy the sharing link (looks like https://drive.google.com/file/d/ABC123/view)
+  //   3. Paste it below
   //
-  // Best size: landscape/wide photo, e.g. 1200x675px
+  // IMPORTANT: Make sure the photo is shared as "Anyone with the link can view"
+  //            in Google Drive, otherwise it won't appear on the site.
+  //
   bandPhoto: "https://drive.google.com/file/d/1VXRQZYn4LT01BhlwxNSO1vEnUxsHuOmy/view",
 
   about: {
+    // The italic gold opening line
     lead:       "Mariachi Sin Frontera — Without Borders — carries the soul of traditional Mexican Mariachi music to every corner of Victoria BC and southern Vancouver Island.",
+    // First paragraph
     paragraph1: "Dressed in striking black Charro adorned with silver accents and bold bow ties, we bring the fire, romance, and joy of authentic Mariachi to weddings, quinceañeras, festivals, private events, and cultural celebrations.",
+    // Second paragraph
     paragraph2: "From classic rancheras and boleros to beloved sones jaliscienses, our repertoire spans the full richness of the Mariachi tradition — performed with passion, precision, and pride."
   },
 
   // ── BAND MEMBERS ─────────────────────────────────────────────────
-  // photo: filename in images/ folder, OR a full Google Drive image link
-  // Leave as "" for a placeholder icon
+  // photo: filename in images/ folder, OR a Google Drive sharing link
+  // Leave photo as "" for a placeholder icon
+  // To get a Drive link: use the Admin Panel → Photos tab → upload → Copy Gallery Link
   members: [
-    { name: "David", role: "Trumpet · Director", bio: "Add a short biography about this member.", photo: "" },
+    { name: "David",       role: "Trumpet · Director", bio: "Add a short biography about this member.", photo: "" },
     { name: "Member Name", role: "Violin",              bio: "Add a short biography about this member.", photo: "" },
     { name: "Member Name", role: "Guitarrón",           bio: "Add a short biography about this member.", photo: "" },
     { name: "Member Name", role: "Vihuela",             bio: "Add a short biography about this member.", photo: "" },
@@ -74,22 +87,26 @@ const SITE_TEXT = {
   ],
 
   // ── GALLERY PHOTOS ───────────────────────────────────────────────
-  // Displays as an auto-scrolling slideshow (one image at a time, 5 seconds each)
+  // Shown as an auto-scrolling slideshow (5 seconds per photo).
   //
-  // HOW TO ADD A PHOTO — TWO OPTIONS:
+  // HOW TO ADD A PHOTO:
   //
-  // Option A: File in images/ folder
-  //   file: "your-photo.jpg"   ← just the filename, include .jpg or .png
+  // Option A — Upload via Admin Panel (recommended, no GitHub needed for the photo itself):
+  //   1. Admin Panel → Photos tab → drag photo into upload box
+  //   2. Click "Copy Gallery Link" — a URL is copied to your clipboard
+  //   3. Edit this file on GitHub (pencil icon)
+  //   4. Add a new line in the gallery section below:
+  //      { file: "PASTE_THE_FULL_LINK_HERE", caption: "Your description" },
+  //   5. Commit — done!
   //
-  // Option B: Google Drive (no re-deploying needed!)
-  //   1. Upload photo to Google Drive
-  //   2. Right-click → Share → "Anyone with the link can view"
-  //   3. Copy the sharing link
-  //   4. The link looks like: https://drive.google.com/file/d/FILE_ID/view
-  //   5. Use this as the file value — the site converts it automatically
-  //   file: "https://drive.google.com/file/d/YOUR_FILE_ID/view"
+  // Option B — Upload directly to GitHub:
+  //   1. Go to GitHub → images/ folder → Add file → Upload files
+  //   2. Add the filename below (include .jpg or .png — case sensitive!):
+  //      { file: "your-photo.jpg", caption: "Your description" },
   //
-  // caption: shown briefly at bottom of slideshow
+  // NOTE: Both options need a line added here. The comma at the end of each
+  //       line is required. Keep the quote marks around values.
+  //
   gallery: [
     { file: "https://drive.google.com/file/d/1VXRQZYn4LT01BhlwxNSO1vEnUxsHuOmy/view", caption: "Performance at Victoria Festival" },
     { file: "gallery-2.jpg", caption: "Wedding Celebration" },
@@ -97,18 +114,29 @@ const SITE_TEXT = {
     { file: "gallery-4.jpg", caption: "Private Party" },
     { file: "gallery-5.jpg", caption: "Outdoor Performance" },
     { file: "gallery-6.jpg", caption: "Band in Charro Suits" }
-    // Add more photos above this line
-    // Copy the format exactly — don't forget the comma at the end of each line
+    // ADD NEW PHOTOS ABOVE THIS LINE — copy the format of the lines above
   ],
 
   // ── YOUTUBE VIDEOS ───────────────────────────────────────────────
-  // Get the video ID from the YouTube URL — the part after ?v=
-  // Example: youtube.com/watch?v=dQw4w9WgXcQ → id: "dQw4w9WgXcQ"
+  // Videos are shown as YouTube embeds on the website.
+  //
+  // HOW TO ADD A VIDEO:
+  //   1. Open the YouTube video in your browser
+  //   2. Look at the address bar — the URL looks like:
+  //      https://www.youtube.com/watch?v=dQw4w9WgXcQ
+  //                                       ^^^^^^^^^^^
+  //      Copy ONLY the letters/numbers after the = sign (the video ID)
+  //   3. Add a new line below (keep the quotes and the comma):
+  //      { id: "dQw4w9WgXcQ", label: "Song or event name" },
+  //
+  // For private band videos: upload to YouTube as "Unlisted" — they won't
+  // appear in search results but will embed correctly on the site.
+  //
   videos: [
     { id: "YOUTUBE_ID_1", label: "Live Performance — Victoria" },
     { id: "YOUTUBE_ID_2", label: "Wedding Celebration" },
     { id: "YOUTUBE_ID_3", label: "Cielito Lindo" }
-    // Add more videos above this line
+    // ADD NEW VIDEOS ABOVE THIS LINE — replace YOUTUBE_ID with the real ID
   ]
 
 };
