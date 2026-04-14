@@ -78,7 +78,7 @@ const SITE_TEXT = {
   // Leave photo as "" for a placeholder icon
   // To get a Drive link: use the Admin Panel → Photos tab → upload → Copy Gallery Link
   members: [
-    { name: "David",       role: "Trumpet · Director", bio: "Add a short biography about this member.", photo: "" },
+    { name: "David",       role: "Trumpet",             bio: "Add a short biography about this member.", photo: "https://drive.google.com/file/d/1BUhM9h93v_lDG552Zfy-oZhI-oKTQnYg/view" },
     { name: "Member Name", role: "Violin",              bio: "Add a short biography about this member.", photo: "" },
     { name: "Member Name", role: "Guitarrón",           bio: "Add a short biography about this member.", photo: "" },
     { name: "Member Name", role: "Vihuela",             bio: "Add a short biography about this member.", photo: "" },
@@ -108,7 +108,7 @@ const SITE_TEXT = {
   //       line is required. Keep the quote marks around values.
   //
   gallery: [
-    { file: "https://drive.google.com/file/d/1v9Yj9cMVKrOjAprY1aDoF1q_W6Gg5G8j/view", caption: "Performance at Victoria Festival" },
+    { file: "https://drive.google.com/file/d/1VXRQZYn4LT01BhlwxNSO1vEnUxsHuOmy/view", caption: "Performance at Victoria Festival" },
     { file: "gallery-2.jpg", caption: "Wedding Celebration" },
     { file: "gallery-3.jpg", caption: "Cultural Event" },
     { file: "gallery-4.jpg", caption: "Private Party" },
