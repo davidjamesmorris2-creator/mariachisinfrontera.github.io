@@ -62,7 +62,7 @@ const SITE_TEXT = {
   // IMPORTANT: Make sure the photo is shared as "Anyone with the link can view"
   //            in Google Drive, otherwise it won't appear on the site.
   //
-  bandPhoto: "https://drive.google.com/file/d/0B4x_XgF1fe65QUdXS3NMWDdtbms/view",
+  bandPhoto: "band-main.jpg",
 
   about: {
     // The italic gold opening line
