@@ -56,11 +56,15 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ── Photo resolver ────────────────────────────────────────
-function resolvePhotoSrc(file) {
+function resolvePhotoSrc(file, size) {
   if (!file) return '';
   if (file.startsWith('http')) {
     var match = file.match(/\/file\/d\/([^/]+)/);
-    if (match) return 'https://drive.google.com/thumbnail?id=' + match[1] + '&sz=w1200';
+    if (match) {
+      // Use w800 for gallery (fast on mobile), w1200 for full quality
+      var sz = size || 'w800';
+      return 'https://drive.google.com/thumbnail?id=' + match[1] + '&sz=' + sz;
+    }
     return file;
   }
   return 'images/' + file;
@@ -112,8 +116,15 @@ function buildAbout() {
   var T = SITE_TEXT;
   var img = document.getElementById('aboutImg');
   if (img && T.bandPhoto) {
-    img.src = resolvePhotoSrc(T.bandPhoto);
+    // Try smaller size first for faster load, then upgrade if needed
+    var src = resolvePhotoSrc(T.bandPhoto, 'w800');
     img.addEventListener('load', function() { img.classList.add('loaded'); });
+    img.addEventListener('error', function() {
+      // If Drive thumbnail fails, try direct approach
+      img.src = resolvePhotoSrc(T.bandPhoto, 'w400');
+    });
+    img.src = src;
+    // If already cached
     if (img.complete && img.naturalWidth > 0) img.classList.add('loaded');
   }
   setText('aboutLead', T.about.lead);
