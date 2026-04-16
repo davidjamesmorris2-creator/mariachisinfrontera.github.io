@@ -116,17 +116,23 @@ function buildAbout() {
   var T = SITE_TEXT;
   var img = document.getElementById('aboutImg');
   if (img && T.bandPhoto) {
-    img.addEventListener('load', function() { img.classList.add('loaded'); });
+    function markLoaded() { img.classList.add('loaded'); }
+    img.addEventListener('load', markLoaded);
     img.addEventListener('error', function() {
-      // lh3 failed — try the /thumbnail endpoint as fallback
+      // Primary URL failed — try Drive thumbnail as fallback
       if (!img.getAttribute('data-tried-thumb')) {
         img.setAttribute('data-tried-thumb','1');
         var m2 = T.bandPhoto.match(/\/file\/d\/([^/]+)/);
-        if (m2) img.src = 'https://drive.google.com/thumbnail?id=' + m2[1] + '&sz=w800';
+        if (m2) {
+          img.src = 'https://drive.google.com/thumbnail?id=' + m2[1] + '&sz=w800';
+        }
       }
     });
     img.src = resolvePhotoSrc(T.bandPhoto);
-    if (img.complete && img.naturalWidth > 0) img.classList.add('loaded');
+    // If browser already has it cached, load event won't fire — check immediately
+    if (img.complete) {
+      if (img.naturalWidth > 0) markLoaded();
+    }
   }
   setText('aboutLead', T.about.lead);
   setText('aboutP1',   T.about.paragraph1);
