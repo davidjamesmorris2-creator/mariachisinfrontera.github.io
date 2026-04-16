@@ -25,7 +25,7 @@ const SITE_TEXT = {
   // ── SOCIAL MEDIA LINKS ───────────────────────────────────────────
   // Replace YOUR_PAGE etc. with your real social media profile links.
   // To add Twitter/X: remove the // at the start of the twitter line.
-  facebook:  "https://www.facebook.com/YOUR_PAGE",
+  facebook:  "https://www.facebook.com/p/Mariachi-Sin-Frontera-61556020538065/",
   instagram: "https://www.instagram.com/mariachisinfronteravictoria",
   youtube:   "https://www.youtube.com/@YOUR_CHANNEL",
   // twitter: "https://twitter.com/YOUR_HANDLE",
