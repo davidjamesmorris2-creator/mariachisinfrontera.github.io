@@ -98,15 +98,24 @@ function buildSocials() {
     navA.title = hasReal ? d.label : d.label + ' (add link in site-text.js)';
     navA.innerHTML = '<svg viewBox="0 0 24 24" ' + attr + ' width="18" height="18">' + d.svg + '</svg>';
     if (navEl) navEl.appendChild(navA);
+    // Also add to mobile overlay socials
+    var overlayEl = document.getElementById('navOverlaySocials');
+    if (overlayEl && hasReal) {
+      var olA = document.createElement('a');
+      olA.href = url; olA.target = '_blank'; olA.className = 'soc';
+      olA.setAttribute('aria-label', d.label);
+      olA.innerHTML = '<svg viewBox="0 0 24 24" ' + attr + ' width="26" height="26">' + d.svg + '</svg>';
+      overlayEl.appendChild(olA);
+    }
 
-    // Contact pill — only show if real link
+    // Contact social icon — only show if real link
     if (hasReal && socRow) {
-      var pill = document.createElement('a');
-      pill.href = url; pill.target = '_blank'; pill.textContent = d.label; pill.className = 'soc-pill';
-      pill.style.cssText = 'border-color:' + d.color + ';color:' + d.color;
-      pill.addEventListener('mouseenter', function() { pill.style.background = d.color; pill.style.color = '#fff'; });
-      pill.addEventListener('mouseleave', function() { pill.style.background = ''; pill.style.color = d.color; });
-      socRow.appendChild(pill);
+      var socA = document.createElement('a');
+      socA.href = url; socA.target = '_blank'; socA.className = 'soc contact-soc';
+      socA.setAttribute('aria-label', d.label); socA.title = d.label;
+      socA.innerHTML = '<svg viewBox="0 0 24 24" ' + attr + ' width="24" height="24">' + d.svg + '</svg>';
+      socA.style.cssText = 'color:' + d.color + ';opacity:1;';
+      socRow.appendChild(socA);
     }
   });
 }
@@ -116,23 +125,9 @@ function buildAbout() {
   var T = SITE_TEXT;
   var img = document.getElementById('aboutImg');
   if (img && T.bandPhoto) {
-    function markLoaded() { img.classList.add('loaded'); }
-    img.addEventListener('load', markLoaded);
-    img.addEventListener('error', function() {
-      // Primary URL failed — try Drive thumbnail as fallback
-      if (!img.getAttribute('data-tried-thumb')) {
-        img.setAttribute('data-tried-thumb','1');
-        var m2 = T.bandPhoto.match(/\/file\/d\/([^/]+)/);
-        if (m2) {
-          img.src = 'https://drive.google.com/thumbnail?id=' + m2[1] + '&sz=w800';
-        }
-      }
-    });
+    // No fade — just show immediately when loaded
+    img.style.opacity = '1';
     img.src = resolvePhotoSrc(T.bandPhoto);
-    // If browser already has it cached, load event won't fire — check immediately
-    if (img.complete) {
-      if (img.naturalWidth > 0) markLoaded();
-    }
   }
   setText('aboutLead', T.about.lead);
   setText('aboutP1',   T.about.paragraph1);
