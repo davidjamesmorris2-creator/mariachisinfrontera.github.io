@@ -7,9 +7,9 @@
 const SITE_TEXT = {
 
   // ── GOOGLE APPS SCRIPT URL ───────────────────────────────────────
-  appsScriptUrl: "https://script.google.com/macros/s/AKfycbzfJnVRape394Pjpuq-nj74LrYTzSJc7P-iVJei4uNblviZZCW1LLulDIjZlTUB3-g/exec",
+  appsScriptUrl: "https://script.google.com/macros/s/AKfycbwftg4j8dgl3XsQXTuzSJkfUEX22A6wCMyyIMCNlRqX-sWVu5IovB6c5MqW-IGftOCt/exec",
   googleSheetId: "15mPIt4aAwwjKH3g3b72E1Uv1zJp-vIbegfBddXAhyV4",
-  adminUrl:      "https://script.google.com/macros/s/AKfycbzfJnVRape394Pjpuq-nj74LrYTzSJc7P-iVJei4uNblviZZCW1LLulDIjZlTUB3-g/exec",
+  adminUrl:      "https://script.google.com/macros/s/AKfycbwftg4j8dgl3XsQXTuzSJkfUEX22A6wCMyyIMCNlRqX-sWVu5IovB6c5MqW-IGftOCt/exec",
 
   // ── CONTACT INFO ─────────────────────────────────────────────────
   phone:    "(250) 555-1234",
