@@ -293,7 +293,7 @@ async function loadGigs() {
 
   } catch (err) {
     if (loading) loading.style.display = 'none';
-    if (empty)   { empty.textContent = 'Could not load performances — check back soon.'; empty.style.display = 'block'; }
+    if (empty)   { empty.textContent = 'No upcoming public performances — check back soon!'; empty.style.display = 'block'; }
   }
 }
 
