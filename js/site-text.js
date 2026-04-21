@@ -12,8 +12,8 @@ const SITE_TEXT = {
   adminUrl:      "https://script.google.com/macros/s/AKfycbwftg4j8dgl3XsQXTuzSJkfUEX22A6wCMyyIMCNlRqX-sWVu5IovB6c5MqW-IGftOCt/exec",
 
   // ── CONTACT INFO ─────────────────────────────────────────────────
-  phone:    "(250) 555-1234",
-  email:    "davidjamesmorris2@gmail.com",
+  phone:    "(250) 686-4855",
+  email:    "sinfronteramariachi@gmail.com",
   location: "Victoria, BC, Canada",
 
   // ── SOCIAL MEDIA LINKS ───────────────────────────────────────────
@@ -26,7 +26,7 @@ const SITE_TEXT = {
   // ── GOOGLE DRIVE LINKS ───────────────────────────────────────────
   // Shown in Admin → Resources tab. Paste Drive folder sharing links.
   drive: {
-    sheetMusic:     "https://drive.google.com/drive/folders/1l0dmjSFQjUmMjaM8Tv2dUZM342ekoWf7?usp=sharing",
+    sheetMusic:     "https://drive.google.com/drive/folders/17hhfMSHvVCSH-gTN31hc7jwvKVQDl60R?usp=sharing",
     pastRecordings: "",
     referenceSongs: ""
   },
