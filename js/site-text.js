@@ -8,7 +8,7 @@ const SITE_TEXT = {
 
   // ── GOOGLE APPS SCRIPT URL ───────────────────────────────────────
   appsScriptUrl: "https://script.google.com/macros/s/AKfycbwftg4j8dgl3XsQXTuzSJkfUEX22A6wCMyyIMCNlRqX-sWVu5IovB6c5MqW-IGftOCt/exec",
-  googleSheetId: "15mPIt4aAwwjKH3g3b72E1Uv1zJp-vIbegfBddXAhyV4",
+  googleSheetId: "1TQ9UjAT7_Z55G-qDa0TVzi8U00QvgCSqnfsq3miZle8",
   adminUrl:      "https://script.google.com/macros/s/AKfycbwftg4j8dgl3XsQXTuzSJkfUEX22A6wCMyyIMCNlRqX-sWVu5IovB6c5MqW-IGftOCt/exec",
 
   // ── CONTACT INFO ─────────────────────────────────────────────────
