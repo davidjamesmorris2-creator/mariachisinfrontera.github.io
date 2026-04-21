@@ -26,7 +26,7 @@ const SITE_TEXT = {
   // ── GOOGLE DRIVE LINKS ───────────────────────────────────────────
   // Shown in Admin → Resources tab. Paste Drive folder sharing links.
   drive: {
-    sheetMusic:     "https://drive.google.com/drive/folders/17hhfMSHvVCSH-gTN31hc7jwvKVQDl60R?usp=sharing",
+    sheetMusic:     "https://drive.google.com/drive/folders/1gN1BwQ683Wx7qn8ElTa7DwBIt25n9Ymm?usp=sharing",
     pastRecordings: "",
     referenceSongs: ""
   },
