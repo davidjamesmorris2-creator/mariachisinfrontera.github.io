@@ -234,7 +234,7 @@ function buildContact() {
   var list = document.getElementById('contactInfoList');
   if (!list) return;
   list.innerHTML = [
-    { label:'Phone',    val: T.phone },
+    { label:'Phone',    val: '<a href="tel:' + T.phone.replace(/[^0-9+]/g,'') + '" style="color:var(--gold)">' + T.phone + '</a>' },
     { label:'Email',    val: '<a href="mailto:' + T.email + '">' + T.email + '</a>' },
     { label:'Based in', val: T.location }
   ].map(function(i) { return '<li><strong>' + i.label + ':</strong> ' + i.val + '</li>'; }).join('');
@@ -276,7 +276,7 @@ async function loadGigs() {
 
     list.innerHTML = gigs.map(function(g) {
       var d = new Date(g.date + 'T00:00:00');
-      var timeHtml = g.time ? '<div class="gig-time">🕐 ' + formatTime(g.time) + '</div>' : '';
+      var timeHtml = g.time ? '<div class="gig-time">🕐 ' + formatTime(g.time) + '</div>' : '<div class="gig-time" style="opacity:.5">🕐 Time TBD</div>';
       var mapsUrl = 'https://maps.google.com/?q=' + encodeURIComponent(g.venue);
       return '<div class="gig-row reveal">' +
         '<div class="gig-cal"><div class="gig-day">' + d.getDate() + '</div>' +
